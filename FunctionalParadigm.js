@@ -38,7 +38,7 @@ const factorial = n => {
         return factorial(n - 1) * n;
     }
 };
-//Algorithm efficiency of O(n) ¡Computer Science!
+//Algorithm efficiency of O(1) BOOM ¡Computer Science!
 function memoisedFactorial(n, cache) {
     cache = cache || [1,1];
     if(cache[n]){
