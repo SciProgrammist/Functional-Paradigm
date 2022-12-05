@@ -14,8 +14,8 @@ function letTest_factorial() {
     x = parseInt(x);
     let y = window.prompt("Give a number to scale the result of the factorial ", 0);
     y = parseInt(y);
-    const facto = procesar(x);
-    window.alert("El resultado de calcula el factorial del numero es: " + facto(y));
+   const facto = procesar(x);
+   window.alert("El resultado de calcula el factorial de " + x +" y ser escalo por " + y + " es: " + facto(y));
 
 };
 
@@ -29,6 +29,7 @@ const sumar = a => {
 
 //Function for the factorial of a number.
 //const factorial = n => (n===1 || n===0) ? 1: factorial(n-1)*n;
+//Algorithm efficiency of O(n^2)
 const factorial = n => {
     //The base case in the recursive aproach of this function
     if (n === 1 || n === 0) {
@@ -37,10 +38,22 @@ const factorial = n => {
         return factorial(n - 1) * n;
     }
 };
+//Algorithm efficiency of O(n) ¡Computer Science!
+function memoisedFactorial(n, cache) {
+    cache = cache || [1,1];
+    if(cache[n]){
+        return cache[n];
+    }
+    else{
+        cache[n] = memoisedFactorial(n-1)*n;
+        return cache[n];
+    }
+
+};
 
 const procesar = n => {
-    const k = factorial(n);
+    const k = memoisedFactorial(n);
     return j => {
         return k * j;
     }
-}
+};
